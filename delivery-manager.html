@@ -77,8 +77,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .stack-box-title{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:14px;}
 .stack-rows{display:flex;flex-direction:column;gap:10px;}
 .stack-row{display:flex;flex-direction:column;gap:3px;}
-.stack-cat{font-size:11px;font-weight:600;color:var(--black);letter-spacing:.06em;text-transform:uppercase;}
+.stack-cat{font-size:11px;font-weight:400;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;}
 .stack-vals{font-size:13px;color:var(--gray);line-height:1.45;}
+.stack-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;}
+.stack-chip{display:inline-block;font-size:12px;font-weight:400;color:var(--gray);background:var(--white);border:1px solid var(--gray-border);border-radius:6px;padding:2px 8px;line-height:1.5;white-space:nowrap;}
 
 /* TABS */
 .tabs-sticky{position:sticky;top:60px;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.88);border-bottom:1px solid var(--gray-border);}
@@ -102,7 +104,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .proj-title{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.1;margin-bottom:14px;position:relative;z-index:1;}
 .proj-url{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:18px;border-bottom:1px solid var(--gray-border);padding-bottom:1px;transition:color .2s;}
 .proj-url:hover{color:var(--black);}
-.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;}
+.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;max-width:700px;}
 
 /* METRICS */
 .metrics-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
@@ -110,12 +112,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .metric-num{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .metric-lbl{font-size:14px;color:var(--gray);line-height:1.4;}
 
-/* RESPONSIBILITIES — first item bold */
+/* RESPONSIBILITIES */
 .resp-title{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:14px;}
 .resp-list{display:flex;flex-direction:column;gap:12px;max-width:700px;}
 .resp-item{display:grid;grid-template-columns:8px 1fr;gap:12px;align-items:start;font-size:17px;color:var(--gray);line-height:1.6;}
-.resp-item:first-child{color:var(--black);font-weight:500;}
-.resp-item:first-child .resp-dot{background:var(--black);}
 .resp-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-top:9px;justify-self:center;}
 
 /* GALLERY — hide placeholder thumbs, show only real images */
@@ -214,16 +214,16 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
   <div class="exp-overview-inner">
     <div>
       <p>Samolet is one of Russia's largest residential real estate developers, with a fully custom digital ecosystem: a high-load public website (5M+ MAU), a customer account platform for online apartment purchases, several property microsite brands, and internal B2B and CMS tools — all deeply integrated with CRM, payment providers, and third-party services.</p>
+      <p>The main challenge was the flagship product — the apartment sales website — a legacy monolith with deep dependencies and significant technical debt, worked on simultaneously by multiple teams. That made cross-team transparency in releases and planning not just important, but critical.</p>
       <p>I joined as Delivery Manager to coordinate 6 distributed development teams and bring structure to a fast-growing, multi-vendor environment. Over 2+ years, I scaled the engineering org from 35 to 53 people, built release and incident management from the ground up, launched a no-code marketing tool, and led a performance initiative that cut page load from 7s to under 3s.</p>
     </div>
     <div class="stack-box">
       <p class="stack-box-title">Stack</p>
       <div class="stack-rows">
-        <div class="stack-row"><span class="stack-cat">Tools</span><span class="stack-vals">Confluence, Jira, Google Workspace, Figma, Draw.io, Productboard</span></div>
-        <div class="stack-row"><span class="stack-cat">Backend</span><span class="stack-vals">Python, REST API, Kafka, Swagger, PostgreSQL, Redis</span></div>
-        <div class="stack-row"><span class="stack-cat">Frontend</span><span class="stack-vals">Vue.js, Nuxt.js</span></div>
-        <div class="stack-row"><span class="stack-cat">Infra</span><span class="stack-vals">Docker, Kubernetes, GitLab CI/CD, Nginx</span></div>
-        <div class="stack-row"><span class="stack-cat">Monitoring</span><span class="stack-vals">ELK Stack, Grafana, Prometheus, Sentry</span></div>
+        <div class="stack-row"><span class="stack-cat">Backend</span><div class="stack-chips"><span class="stack-chip">Python (monolith)</span><span class="stack-chip">REST API</span><span class="stack-chip">Kafka</span><span class="stack-chip">Swagger</span><span class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Frontend</span><div class="stack-chips"><span class="stack-chip">Vue.js</span><span class="stack-chip">Nuxt.js</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Infrastructure</span><div class="stack-chips"><span class="stack-chip">Docker</span><span class="stack-chip">Kubernetes</span><span class="stack-chip">GitLab CI/CD</span><span class="stack-chip">Nginx</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Monitoring</span><div class="stack-chips"><span class="stack-chip">ELK Stack</span><span class="stack-chip">Grafana</span><span class="stack-chip">Prometheus</span><span class="stack-chip">Sentry</span></div></div>
       </div>
     </div>
   </div>
@@ -267,9 +267,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(0,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(0,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(0,2)"><div class="g-thumb-ph">Screenshot 3</div></div>
+        <div class="g-thumb" onclick="openLB(0,0)"><img src="proj1-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(0,1)"><img src="proj1-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(0,2)"><img src="proj1-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
       </div>
     </div>
   </div>
@@ -292,8 +292,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(1,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(1,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(1,0)"><img src="proj2-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(1,1)"><img src="proj2-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
       </div>
     </div>
   </div>
@@ -318,8 +318,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(2,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(2,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(2,0)"><img src="proj3-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(2,1)"><img src="proj3-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
       </div>
     </div>
   </div>

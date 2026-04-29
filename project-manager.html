@@ -66,8 +66,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .stack-box-title{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:14px;}
 .stack-rows{display:flex;flex-direction:column;gap:10px;}
 .stack-row{display:flex;flex-direction:column;gap:3px;}
-.stack-cat{font-size:11px;font-weight:600;color:var(--black);letter-spacing:.06em;text-transform:uppercase;}
+.stack-cat{font-size:11px;font-weight:400;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;}
 .stack-vals{font-size:13px;color:var(--gray);line-height:1.45;}
+.stack-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;}
+.stack-chip{display:inline-block;font-size:12px;font-weight:400;color:var(--gray);background:var(--white);border:1px solid var(--gray-border);border-radius:6px;padding:2px 8px;line-height:1.5;white-space:nowrap;}
 .tabs-sticky{position:sticky;top:60px;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.88);border-bottom:1px solid var(--gray-border);}
 .tabs-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2px;height:52px;padding:0 48px;overflow-x:auto;scrollbar-width:none;}
 .tabs-inner::-webkit-scrollbar{display:none;}
@@ -84,7 +86,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .proj-title{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.1;margin-bottom:14px;}
 .proj-url{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:18px;border-bottom:1px solid var(--gray-border);padding-bottom:1px;transition:color .2s;}
 .proj-url:hover{color:var(--black);}
-.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;}
+.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;max-width:700px;}
 .metrics-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
 .metric-item{background:var(--gray-light);border-radius:12px;padding:18px 20px;flex:1;min-width:140px;max-width:220px;display:flex;flex-direction:column;gap:12px;min-height:80px;justify-content:center;}
 .metric-num{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -92,8 +94,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .resp-title{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:14px;}
 .resp-list{display:flex;flex-direction:column;gap:12px;max-width:700px;}
 .resp-item{display:grid;grid-template-columns:8px 1fr;gap:12px;align-items:start;font-size:17px;color:var(--gray);line-height:1.6;}
-.resp-item:first-child{color:var(--black);font-weight:500;}
-.resp-item:first-child .resp-dot{background:var(--black);}
 .resp-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-top:9px;justify-self:center;}
 /* Gallery sidebar */
 .proj-layout{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:start;}
@@ -187,13 +187,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
       <p>Across projects I maintained an 8.7/10 client satisfaction score, revised billing practices to increase profitability by 30%, and collaborated closely with product managers on backlog management, UX research, and A/B testing.</p>
     </div>
     <div class="stack-box">
-      <p class="stack-box-title">Common Stack</p>
+      <p class="stack-box-title">Stack</p>
       <div class="stack-rows">
-        <div class="stack-row"><span class="stack-cat">Tools</span><span class="stack-vals">ActiveCollab / Jira, Confluence, Google Workspace, Notion, Miro, Figma</span></div>
-        <div class="stack-row"><span class="stack-cat">Analytics</span><span class="stack-vals">Google Analytics, GTM, Yandex Metrica</span></div>
-        <div class="stack-row"><span class="stack-cat">Backend</span><span class="stack-vals">Python, REST API, GraphQL, Kafka, PostgreSQL, Redis</span></div>
-        <div class="stack-row"><span class="stack-cat">Frontend</span><span class="stack-vals">Vue.js, Nuxt.js, TypeScript</span></div>
-        <div class="stack-row"><span class="stack-cat">Infra</span><span class="stack-vals">Docker, GitLab CI/CD, Nginx, Kubernetes</span></div>
+        <div class="stack-row"><span class="stack-cat">Backend</span><div class="stack-chips"><span class="stack-chip">Python (microservices &amp; monolith)</span><span class="stack-chip">REST API</span><span class="stack-chip">GraphQL</span><span class="stack-chip">Kafka</span><span class="stack-chip">Swagger</span><span class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Frontend</span><div class="stack-chips"><span class="stack-chip">Vue.js</span><span class="stack-chip">Nuxt.js</span><span class="stack-chip">TypeScript</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Infrastructure</span><div class="stack-chips"><span class="stack-chip">Docker</span><span class="stack-chip">Kubernetes</span><span class="stack-chip">GitLab CI/CD</span><span class="stack-chip">Nginx</span><span class="stack-chip">Keycloak</span></div></div>
+        <div class="stack-row"><span class="stack-cat">Monitoring</span><div class="stack-chips"><span class="stack-chip">ELK Stack</span><span class="stack-chip">Grafana</span><span class="stack-chip">Prometheus</span><span class="stack-chip">Sentry</span></div></div>
       </div>
     </div>
   </div>
@@ -239,14 +238,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(0,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(0,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(0,2)"><div class="g-thumb-ph">Screenshot 3</div></div>
+        <div class="g-thumb" onclick="openLB(0,0)"><img src="pm-p1-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(0,1)"><img src="pm-p1-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(0,2)"><img src="pm-p1-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
       </div>
-    </div>
-  </div>
-
-  <div class="proj-block" id="proj2">
     <div class="proj-layout">
       <div class="proj-main">
         <div class="proj-num-wrap"><span class="proj-num">Project 02</span><span class="proj-num-bg">02</span></div>
@@ -260,7 +255,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(1,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(1,0)"><img src="pm-p2-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
       </div>
     </div>
   </div>
@@ -286,9 +281,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(2,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(2,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(2,2)"><div class="g-thumb-ph">Screenshot 3</div></div>
+        <div class="g-thumb" onclick="openLB(2,0)"><img src="pm-p3-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(2,1)"><img src="pm-p3-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(2,2)"><img src="pm-p3-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
       </div>
     </div>
   </div>
@@ -309,9 +304,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(3,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(3,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(3,2)"><div class="g-thumb-ph">Screenshot 3</div></div>
+        <div class="g-thumb" onclick="openLB(3,0)"><img src="pm-p4-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(3,1)"><img src="pm-p4-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(3,2)"><img src="pm-p4-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
       </div>
     </div>
   </div>
@@ -332,9 +327,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
         </div>
       </div>
       <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(4,0)"><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(4,1)"><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(4,2)"><div class="g-thumb-ph">Screenshot 3</div></div>
+        <div class="g-thumb" onclick="openLB(4,0)"><img src="pm-p5-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
+        <div class="g-thumb" onclick="openLB(4,1)"><img src="pm-p5-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
+        <div class="g-thumb" onclick="openLB(4,2)"><img src="pm-p5-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
       </div>
     </div>
   </div>
