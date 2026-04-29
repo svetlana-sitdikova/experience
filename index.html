@@ -207,6 +207,7 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
 .lang-name{font-size:14px;font-weight:500;white-space:nowrap;}
 .lang-badge{font-size:12px;color:var(--gray);white-space:nowrap;}
 
+.hero-bio-mob,.hero-actions-mob{display:none;}
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   nav{padding:0;}.nav-inner{padding:0 20px;}
@@ -214,30 +215,31 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
   /* hamburger always right-aligned */
   .hamburger{display:flex;margin-left:auto;}
 
-  /* HERO — photo right of name/label */
+  /* HERO — photo top-right, name beside it, bio+buttons full width below */
   #hero{
     display:grid;
     grid-template-columns:1fr 100px;
+    grid-template-rows:auto auto;
     gap:0 16px;
     padding:24px 20px 40px;
     align-items:start;
     max-width:100vw;
     box-sizing:border-box;
   }
-  /* hero-left spans full left column, including actions */
-  .hero-left{grid-column:1;grid-row:1;gap:14px;min-width:0;}
-  /* bio: full width of its column — not constrained */
-  .hero-bio{max-width:100%;}
-  /* photo: right column, top-aligned */
-  .hero-right{grid-column:2;grid-row:1;align-items:flex-start;justify-content:flex-end;align-self:start;}
+  /* label + name: left column, row 1 */
+  .hero-left{grid-column:1 / 2;grid-row:1;gap:14px;min-width:0;}
+  /* hide bio and actions in their original position */
+  .hero-bio,.hero-actions{display:none;}
+  /* photo: right column, row 1 */
+  .hero-right{grid-column:2 / 3;grid-row:1;align-items:flex-start;justify-content:flex-end;align-self:start;}
   .photo-wrap{width:100px;}
+  /* bio + actions full width below, row 2 */
+  .hero-bio-mob{display:block;grid-column:1 / 3;grid-row:2;margin-top:18px;font-size:17px;color:var(--gray);line-height:1.7;}
+  .hero-actions-mob{display:flex;grid-column:1 / 3;grid-row:3;margin-top:14px;align-items:center;gap:14px;flex-wrap:wrap;}
 
-  .stats-grid{grid-template-columns:repeat(2,1fr);padding:0 20px;gap:12px;border-radius:0;}
-  .stat-card{padding:22px 20px 20px;}
-  .stat-card:first-child{border-radius:14px 0 0 0;}
-  .stat-card:nth-child(2){border-radius:0 14px 0 0;}
-  .stat-card:nth-child(3){border-radius:0 0 0 14px;}
-  .stat-card:last-child{border-radius:0 0 14px 0;}
+  /* stat cards: all rounded */
+  .stats-grid{grid-template-columns:repeat(2,1fr);padding:0 20px;gap:12px;}
+  .stat-card{padding:22px 20px 20px;border-radius:14px !important;}
 
   /* Experience section */
   #experience.section{padding-top:24px;}
@@ -250,8 +252,14 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
   .tl-item-compact{grid-template-columns:1fr;gap:4px;padding-left:0;}
   .tl-compact-head{flex-direction:column;gap:2px;}
 
-  /* Cards grid: 1 column on mobile */
-  .cards-grid{grid-template-columns:1fr;}
+  /* Cards grid: 1 column on mobile, equal width (reset nth-child spans) */
+  .cards-grid{grid-template-columns:1fr;display:flex;flex-direction:column;}
+  .cards-grid .w-card:nth-child(1),
+  .cards-grid .w-card:nth-child(2),
+  .cards-grid .w-card:nth-child(3),
+  .cards-grid .w-card:nth-child(4),
+  .cards-grid .w-card:nth-child(5),
+  .cards-grid .w-card:nth-child(6){grid-column:unset;width:100%;}
   .cards-section .ct-inner{padding:0 20px;}
   #about .sec-lbl ~ h2{font-size:clamp(32px,4vw,48px) !important;}
 
@@ -326,6 +334,17 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
     </div>
     <div class="hero-right rv">
       <div class="photo-wrap"><div class="photo-img"><img src="portrait.png" alt="Svetlana"></div></div>
+    </div>
+    <p class="hero-bio-mob">I manage delivery across complex systems with external integrations and multi-team environments — keeping processes clear, releases predictable, and stakeholders aligned.</p>
+    <div class="hero-actions-mob">
+      <a href="CV_PM_Sitdikova_Svetlana.pdf" class="btn-cv" target="_blank" rel="noopener" onclick="gtag('event','click_download_cv')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+      <div class="soc-icons">
+        <a href="https://www.linkedin.com/in/svetlana-sitdikova" class="soc-icon" title="LinkedIn" target="_blank" rel="noopener" onclick="gtag('event','click_linkedin_hero')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://t.me/Svetllana_s" class="soc-icon" title="Telegram" target="_blank" rel="noopener" onclick="gtag('event','click_telegram_hero')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
