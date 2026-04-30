@@ -166,6 +166,24 @@ nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07);}
 .w-card .c-head{font-size:18px;font-weight:500;margin-bottom:10px;color:var(--white);line-height:1.3;}
 .w-card .c-body{font-size:15px;color:rgba(255,255,255,.82);line-height:1.6;}
 
+/* ── PROJECT CARDS ── */
+.proj-cards-section{padding:48px 0 64px;}
+.proj-cards-section .ct-inner{max-width:var(--ct);margin:0 auto;padding:0 48px;}
+.proj-group{margin-top:0;}
+.proj-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+.proj-card{background:var(--gray-light);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:background .2s,transform .18s,box-shadow .2s;cursor:pointer;border:1.5px solid transparent;position:relative;}
+.proj-card:hover{background:#ebebea;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.09);border-color:var(--yellow);}
+.proj-card-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2px;}.proj-card-badge{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);background:var(--white);border:1px solid var(--gray-border);border-radius:5px;padding:2px 7px;white-space:nowrap;line-height:1.5;}
+.proj-card:hover .proj-card-badge{background:rgba(255,255,255,.7);}
+.proj-card-title{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1.2;color:var(--black);}
+.proj-card-desc{font-size:14px;color:var(--gray);line-height:1.6;flex:1;}
+.proj-card-footer{margin-top:6px;padding-top:14px;border-top:1px solid var(--gray-border);}
+.proj-card:hover .proj-card-footer{border-top-color:#d8d8d6;}
+.proj-card-cta{font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);display:inline-flex;align-items:center;gap:6px;transition:color .2s;}
+.proj-card-cta svg{width:12px;height:12px;transition:transform .2s;}
+.proj-card:hover .proj-card-cta{color:var(--black);}
+.proj-card:hover .proj-card-cta svg{transform:translateX(3px);}
+
 /* ── FOOTER ── */
 footer{background:var(--black);color:var(--white);padding:48px 0 0;}
 .ft-inner{max-width:var(--ct);margin:0 auto;padding:0 48px 56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;border-bottom:1px solid #1E1E20;}
@@ -272,6 +290,9 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
   .tl-ach em{word-break:break-word;}
   .ft-email{font-size:clamp(16px,4.5vw,24px);word-break:break-all;}
 
+  .proj-cards-grid{grid-template-columns:1fr;}
+  .proj-cards-section .ct-inner{padding:0 20px;}
+
   /* Footer mobile — avatar 3× (96px) */
   .ft-inner{grid-template-columns:1fr;gap:36px;padding:0 20px 48px;}
   .ft-h2{font-size:32px;}
@@ -289,6 +310,7 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
     <a href="." class="nav-logo" onclick="gtag('event','click_nav_logo')"><img src="logo_avatar.png" alt="Svetlana"></a>
     <div class="nav-links">
       <a href="#experience" onclick="gtag('event','click_nav_experience')">Experience</a>
+      <a href="#projects" onclick="gtag('event','click_nav_projects')">Projects</a>
       <a href="#about" onclick="gtag('event','click_nav_about')">About</a>
       <a href="#contacts" onclick="gtag('event','click_nav_contact')">Contact</a>
     </div>
@@ -308,6 +330,7 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
 
 <div class="mob-menu" id="mob-menu">
   <a href="#experience" onclick="closeMob();gtag('event','click_mob_experience')">Experience</a>
+  <a href="#projects" onclick="closeMob();gtag('event','click_mob_projects')">Projects</a>
   <a href="#about" onclick="closeMob();gtag('event','click_mob_about')">About</a>
   <a href="#contacts" onclick="closeMob();gtag('event','click_mob_contact')">Contact</a>
   <button class="mob-email" onclick="copyMobEmail(this);gtag('event','click_mob_copy_email');">
@@ -473,6 +496,114 @@ footer{background:var(--black);color:var(--white);padding:48px 0 0;}
         <div class="lang-row"><span class="lang-name">English</span><span class="lang-badge">B2 · Upper-Intermediate</span></div>
       </div>
     </div>
+
+<!-- Project Cards Section -->
+<section id="projects" class="proj-cards-section">
+  <div class="ct-inner">
+    <p class="sec-lbl rv">SELECTED WORK</p>
+    <h2 class="rv" style="font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;line-height:1.1;">Projects</h2>
+
+    <div class="proj-group rv" style="margin-top:0;">
+      <div class="proj-cards-grid">
+
+        <a href="delivery-manager.html#proj1" class="proj-card rv" onclick="gtag('event','click_proj_card_dm1')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+            <span class="proj-card-badge">B2B</span>
+            <span class="proj-card-badge">Internal tool</span>
+          </div>
+          <div class="proj-card-title">Samolet Ecosystem Multi-Team Program</div>
+          <p class="proj-card-desc">Coordinated 6 distributed teams shipping a 5M MAU real estate website, customer account platform, and internal B2B tools simultaneously.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="delivery-manager.html#proj2" class="proj-card rv d1" onclick="gtag('event','click_proj_card_dm2')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">Internal tool</span>
+          </div>
+          <div class="proj-card-title">No-Code Landing Page Builder</div>
+          <p class="proj-card-desc">Identified the bottleneck, proposed and delivered an internal no-code platform that cut marketing page launch time from 2–3 weeks to 1 day.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="delivery-manager.html#proj3" class="proj-card rv d2" onclick="gtag('event','click_proj_card_dm3')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+            <span class="proj-card-badge">E-commerce</span>
+          </div>
+          <div class="proj-card-title">Online Real Estate Transaction Flow</div>
+          <p class="proj-card-desc">Online apartment purchase flow — questionnaire, document signing, and payment — delivered as MVP in 2.5 months instead of the planned 6.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="project-manager.html#proj1" class="proj-card rv" onclick="gtag('event','click_proj_card_pm1')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+            <span class="proj-card-badge">Marketplace</span>
+          </div>
+          <div class="proj-card-title">Samolet Plus Real Estate Marketplace</div>
+          <p class="proj-card-desc">Nationwide secondary real estate marketplace with CRM integration — joined mid-crisis and brought a 20-person team to production.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="project-manager.html#proj2" class="proj-card rv d1" onclick="gtag('event','click_proj_card_pm2')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">Internal tool</span>
+            <span class="proj-card-badge">Cross-product</span>
+          </div>
+          <div class="proj-card-title">Auth & SMS Notification Service</div>
+          <p class="proj-card-desc">Internal cross-product service unifying identity management and SMS notifications across multiple platforms, built on Keycloak.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="project-manager.html#proj3" class="proj-card rv d2" onclick="gtag('event','click_proj_card_pm3')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+            <span class="proj-card-badge">E-commerce</span>
+          </div>
+          <div class="proj-card-title">A101 Real Estate Digital Platform</div>
+          <p class="proj-card-desc">Long-term delivery and enhancement of a customer-facing property marketplace — and a billing revision that lifted agency profitability by 30%.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="project-manager.html#proj4" class="proj-card rv" onclick="gtag('event','click_proj_card_pm4')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+          </div>
+          <div class="proj-card-title">A101 Interactive Commercial Real Estate Map</div>
+          <p class="proj-card-desc">A fully custom tile-based interactive map for browsing commercial units in new developments, built from hand-drawn architectural plans.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="project-manager.html#proj5" class="proj-card rv d1" onclick="gtag('event','click_proj_card_pm5')">
+          <div class="proj-card-badges">
+            <span class="proj-card-badge">B2C</span>
+          </div>
+          <div class="proj-card-title">Beregovoy Kvartal Premium Residential Website</div>
+          <p class="proj-card-desc">Full-cycle delivery of a premium residential marketing site — apartment catalog, mortgage tools, personal account, and CRM integrations.</p>
+          <div class="proj-card-footer">
+            <span class="proj-card-cta">In detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 6 cards, static 3×2 grid -->
 <section id="about" class="cards-section">
