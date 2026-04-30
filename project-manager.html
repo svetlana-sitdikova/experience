@@ -86,17 +86,17 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .proj-title{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.1;margin-bottom:14px;}
 .proj-url{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:18px;border-bottom:1px solid var(--gray-border);padding-bottom:1px;transition:color .2s;}
 .proj-url:hover{color:var(--black);}
-.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;max-width:700px;}
+.proj-desc{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;max-width:860px;}
 .metrics-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
 .metric-item{background:var(--gray-light);border-radius:12px;padding:18px 20px;flex:1;min-width:140px;max-width:220px;display:flex;flex-direction:column;gap:12px;min-height:80px;justify-content:center;}
 .metric-num{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .metric-lbl{font-size:14px;color:var(--gray);line-height:1.4;}
 .resp-title{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:14px;}
-.resp-list{display:flex;flex-direction:column;gap:12px;max-width:700px;}
+.resp-list{display:flex;flex-direction:column;gap:12px;max-width:860px;}
 .resp-item{display:grid;grid-template-columns:8px 1fr;gap:12px;align-items:start;font-size:17px;color:var(--gray);line-height:1.6;}
 .resp-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-top:9px;justify-self:center;}
 /* Gallery sidebar */
-.proj-layout{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:start;}
+.proj-layout{display:block;}
 .proj-side{display:flex;flex-direction:column;gap:12px;padding-top:122px;}
 .g-thumb{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;cursor:pointer;background:var(--gray-light);transition:opacity .2s,transform .15s;display:none;}
 .g-thumb.loaded{display:block;}
@@ -216,8 +216,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 <div class="exp-content">
 
   <div class="proj-block" id="proj1">
-    <div class="proj-layout">
-      <div class="proj-main">
+    
         <div class="proj-num-wrap"><span class="proj-num">Project 01</span><span class="proj-num-bg">01</span></div>
         <h2 class="proj-title">Samolet Plus Secondary Real Estate Marketplace</h2>
         <a href="https://samoletplus.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_samoletplus')">samoletplus.ru ↗</a>
@@ -236,18 +235,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
           <div class="resp-item"><div class="resp-dot"></div><span>Collaborated with 10+ cross-functional and adjacent product teams, managing dependencies and communication across a large multi-team environment</span></div>
           <div class="resp-item"><div class="resp-dot"></div><span>Worked within a large PMO structure, actively contributing to shared processes and standards</span></div>
         </div>
-      </div>
-      <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(0,0)"><img src="pm-p1-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(0,1)"><img src="pm-p1-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(0,2)"><img src="pm-p1-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
-      </div>
-    </div>
   </div>
 
   <div class="proj-block" id="proj2">
-    <div class="proj-layout">
-      <div class="proj-main">
+    
         <div class="proj-num-wrap"><span class="proj-num">Project 02</span><span class="proj-num-bg">02</span></div>
         <h2 class="proj-title">Samolet Plus Auth & SMS Notification Service</h2>
         <p class="proj-desc">An internal cross-product service built to unify identity management and SMS notifications across multiple digital platforms. Built on Keycloak, handling authentication, authorization, and centralized OTP delivery. A cross-team dependency project: multiple platforms depended on it shipping correctly.</p>
@@ -257,16 +248,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
           <div class="resp-item"><div class="resp-dot"></div><span>Coordinated integration with existing products and drove consistent adoption across teams on different timelines</span></div>
           <div class="resp-item"><div class="resp-dot"></div><span>Managed integration with two SMS providers — ensured seamless traffic switching and reliable OTP delivery across all platforms with no service disruption</span></div>
         </div>
-      </div>
-      <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(1,0)"><img src="pm-p2-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
-      </div>
-    </div>
   </div>
 
   <div class="proj-block" id="proj3">
-    <div class="proj-layout">
-      <div class="proj-main">
+    
         <div class="proj-num-wrap"><span class="proj-num">Project 03</span><span class="proj-num-bg">03</span></div>
         <h2 class="proj-title">A101 Real Estate Digital Platform</h2>
         <a href="https://a101.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_a101')">a101.ru ↗</a>
@@ -283,18 +268,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
           <div class="resp-item"><div class="resp-dot"></div><span>Collaborated with the product manager on backlog refinement, hypothesis evaluation, UX research, and A/B testing</span></div>
           <div class="resp-item"><div class="resp-dot"></div><span>Managed project financials: monthly reports, payment tracking, profitability monitoring. Revised billing approach and increased profitability by 30%</span></div>
         </div>
-      </div>
-      <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(2,0)"><img src="pm-p3-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(2,1)"><img src="pm-p3-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(2,2)"><img src="pm-p3-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
-      </div>
-    </div>
   </div>
 
   <div class="proj-block" id="proj4">
-    <div class="proj-layout">
-      <div class="proj-main">
+    
         <div class="proj-num-wrap"><span class="proj-num">Project 04</span><span class="proj-num-bg">04</span></div>
         <h2 class="proj-title">A101 Interactive Commercial Real Estate Map</h2>
         <a href="https://a101.ru/commercial/map/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_a101_map')">a101.ru/commercial/map ↗</a>
@@ -306,18 +283,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
           <div class="resp-item"><div class="resp-dot"></div><span>Led a full redesign of the map interface, managing the design and development cycle while ensuring continuity of the live product</span></div>
           <div class="resp-item"><div class="resp-dot"></div><span>Supported continuous product development: prioritized and delivered iterative improvements based on business needs and user feedback</span></div>
         </div>
-      </div>
-      <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(3,0)"><img src="pm-p4-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(3,1)"><img src="pm-p4-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(3,2)"><img src="pm-p4-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
-      </div>
-    </div>
   </div>
 
   <div class="proj-block" id="proj5">
-    <div class="proj-layout">
-      <div class="proj-main">
+    
         <div class="proj-num-wrap"><span class="proj-num">Project 05</span><span class="proj-num-bg">05</span></div>
         <h2 class="proj-title">Beregovoy Kvartal Premium Residential Website</h2>
         <a href="https://beregovoy-kvartal.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_beregovoy')">beregovoy-kvartal.ru ↗</a>
@@ -329,13 +298,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
           <div class="resp-item"><div class="resp-dot"></div><span>Maintained elevated design and UX quality standards — worked closely with designers on review and acceptance before any client presentation</span></div>
           <div class="resp-item"><div class="resp-dot"></div><span>Managed CRM and analytics integrations with third-party systems</span></div>
         </div>
-      </div>
-      <div class="proj-side">
-        <div class="g-thumb" onclick="openLB(4,0)"><img src="pm-p5-1.png" alt=""><div class="g-thumb-ph">Screenshot 1</div></div>
-        <div class="g-thumb" onclick="openLB(4,1)"><img src="pm-p5-2.png" alt=""><div class="g-thumb-ph">Screenshot 2</div></div>
-        <div class="g-thumb" onclick="openLB(4,2)"><img src="pm-p5-3.png" alt=""><div class="g-thumb-ph">Screenshot 3</div></div>
-      </div>
-    </div>
   </div>
 
 </div>
