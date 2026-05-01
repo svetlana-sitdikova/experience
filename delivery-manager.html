@@ -712,13 +712,12 @@ initSideDots();initGallery();updateTabs();
   if(!hash)return;
   var target=document.querySelector(hash);
   if(!target)return;
-  // Wait for layout to settle, then scroll with offset for nav+tabs
   setTimeout(function(){
     var topNav=document.querySelector('.top-nav');
     var tabsEl=document.getElementById('tabs-sticky');
     var offset=(topNav?topNav.offsetHeight:60)+(tabsEl?tabsEl.offsetHeight:52)+16;
     var top=target.getBoundingClientRect().top+window.scrollY-offset;
-    window.scrollTo({top:top,behavior:'smooth'});
+    window.scrollTo({top:top,behavior:'instant'});
   },120);
 })();
 </script>
