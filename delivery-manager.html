@@ -29,7 +29,7 @@ if(window.location.pathname.endsWith('.html')){
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--yellow:#EDD55A;--white:#FFFFFF;--black:#0B0B0C;--gray:#5a5a5a;--gray-light:#F4F4F2;--gray-border:#E5E5E5;--sans:'DM Sans',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif;}
-html{scroll-behavior:smooth;}
+html{}
 body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:17px;line-height:1.7;overflow-x:clip;}
 #prog{position:fixed;top:0;left:0;height:3px;background:var(--yellow);width:0%;z-index:9999;border-radius:0 2px 2px 0;transition:width .08s linear;}
 
@@ -183,7 +183,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 /* MOBILE BOTTOM SHEET */
 .eco-sheet-overlay{display:none;position:fixed;inset:0;z-index:8900;background:rgba(11,11,12,.4);opacity:0;transition:opacity .25s;touch-action:none;}
 .eco-sheet-overlay.open{opacity:1;}
-.eco-sheet{position:fixed;bottom:0;left:0;right:0;z-index:8950;background:var(--white);border-radius:20px 20px 0 0;padding:20px 20px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.12);transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.6,1);display:flex;flex-direction:column;gap:10px;}
+.eco-sheet{position:fixed;bottom:0;left:0;right:0;z-index:8950;background:var(--white);border-radius:20px 20px 0 0;padding:20px 20px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.12);transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.6,1);display:flex;flex-direction:column;gap:10px;touch-action:none;}
 .eco-sheet-handle{width:36px;height:4px;border-radius:2px;background:var(--gray-border);margin:0 auto 10px;cursor:grab;padding:10px 24px;box-sizing:content-box;background-clip:content-box;}
 .eco-sheet-tag{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);}
 .eco-sheet-name{font-size:18px;font-family:var(--serif);font-weight:400;color:var(--black);line-height:1.2;}
@@ -641,6 +641,7 @@ function openSheet(chip){
   var ov=document.getElementById('ecoOverlay');
   var sh=document.getElementById('ecoSheet');
   ov.style.display='block';
+  document.body.style.overflow='hidden';
   requestAnimationFrame(function(){
     ov.classList.add('open');
     sh.classList.add('open');
@@ -651,6 +652,7 @@ function closeSheet(){
   var sh=document.getElementById('ecoSheet');
   ov.classList.remove('open');
   sh.classList.remove('open');
+  document.body.style.overflow='';
   setTimeout(function(){ov.style.display='none';},280);
 }
 
