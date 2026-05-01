@@ -123,9 +123,9 @@ nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07);}
 .tl-nav{position:sticky;top:80px;height:fit-content;display:flex;flex-direction:column;align-items:center;padding-top:52px;} /* align first dot with tl-years: tl-item padding-top(36px) + years padding-top(4px) + half font leading ≈ 52px */
 .tl-track{position:relative;display:flex;flex-direction:column;align-items:center;}
 .tl-line{width:1px;background:var(--gray-border);position:absolute;top:6px;bottom:6px;left:50%;transform:translateX(-50%);z-index:0;}
-.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--white);border:2px solid #C0C0C0;position:relative;z-index:1;cursor:pointer;transition:all .3s;flex-shrink:0;}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--white);border:2px solid #C0C0C0;position:relative;z-index:1;cursor:pointer;transition:background .4s ease,border-color .4s ease,transform .4s ease;flex-shrink:0;}
 .tl-dot.active{background:var(--yellow);border-color:var(--yellow);transform:scale(1.4);}
-.tl-seg{height:148px;width:1px;background:var(--gray-border);transition:background .3s;}
+.tl-seg{height:148px;width:1px;background:var(--gray-border);transition:background .5s ease;}
 .tl-seg.filled{background:var(--yellow);}
 .timeline{display:flex;flex-direction:column;}
 .tl-item{display:grid;grid-template-columns:196px 1fr;gap:36px;padding:36px 0 36px 24px;border-bottom:1px solid var(--gray-border);}
@@ -383,19 +383,19 @@ footer{background:var(--black);color:var(--white);padding:36px 0 0;}
 <div class="stats-band">
   <div class="stats-grid rv">
     <div class="stat-card">
-      <div class="stat-num">5</div>
+      <div class="stat-num" data-count="5">5</div>
       <div class="stat-lbl">Years in IT project management</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">53</div>
+      <div class="stat-num" data-count="53">53</div>
       <div class="stat-lbl">Engineers in the largest team</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">10+</div>
+      <div class="stat-num" data-count="10" data-suffix="+">10+</div>
       <div class="stat-lbl">Full-cycle projects delivered end to end</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">5M</div>
+      <div class="stat-num" data-count="5" data-suffix="M">5M</div>
       <div class="stat-lbl">MAU on the platform<br>I managed delivery for</div>
     </div>
   </div>
@@ -747,6 +747,38 @@ updateDots();updProg();
   var toolWrap=document.querySelector('.tool-tags');
   if(toolWrap)tagObs.observe(toolWrap);
 })();
+
+/* ── COUNT-UP ── */
+(function(){
+  function easeOut(t){return 1-Math.pow(1-t,3);}
+  function animateCount(el){
+    var target=parseInt(el.dataset.count,10);
+    var suffix=el.dataset.suffix||'';
+    var duration=900;
+    var start=performance.now();
+    function step(now){
+      var p=Math.min((now-start)/duration,1);
+      var val=Math.round(easeOut(p)*target);
+      el.textContent=val+suffix;
+      if(p<1)requestAnimationFrame(step);
+      else el.textContent=target+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  var countObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        animateCount(e.target);
+        countObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.stat-num[data-count]').forEach(function(el){
+    el.textContent='0'+(el.dataset.suffix||'');
+    countObs.observe(el);
+  });
+})();
+
 </script>
 </body>
 </html>
