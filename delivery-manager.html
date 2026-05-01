@@ -30,7 +30,7 @@ if(window.location.pathname.endsWith('.html')){
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--yellow:#EDD55A;--white:#FFFFFF;--black:#0B0B0C;--gray:#5a5a5a;--gray-light:#F4F4F2;--gray-border:#E5E5E5;--sans:'DM Sans',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:17px;line-height:1.7;overflow-x:hidden;}
+body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:17px;line-height:1.7;overflow-x:clip;}
 #prog{position:fixed;top:0;left:0;height:3px;background:var(--yellow);width:0%;z-index:9999;border-radius:0 2px 2px 0;transition:width .08s linear;}
 
 /* NAV */
@@ -75,6 +75,14 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 /* Stack box */
 .stack-box{background:var(--gray-light);border-radius:14px;padding:20px 18px;}
 .stack-box-title{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:14px;}
+/* mobile accordion stack */
+.stack-mob{display:none;margin:0 20px;border-radius:12px;overflow:hidden;border:1px solid var(--gray-border);}
+.stack-mob-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border:none;padding:14px 16px;cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);}
+.stack-mob-toggle svg{width:14px;height:14px;flex-shrink:0;transition:transform .25s;}
+.stack-mob.open .stack-mob-toggle svg{transform:rotate(180deg);}
+.stack-mob-body{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--gray-light);}
+.stack-mob.open .stack-mob-body{max-height:400px;}
+.stack-mob-inner{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px;}
 .stack-rows{display:flex;flex-direction:column;gap:10px;}
 .stack-row{display:flex;flex-direction:column;gap:3px;}
 .stack-cat{font-size:11px;font-weight:400;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;}
@@ -176,27 +184,34 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .eco-sheet-overlay{display:none;position:fixed;inset:0;z-index:8900;background:rgba(11,11,12,.4);opacity:0;transition:opacity .25s;touch-action:none;}
 .eco-sheet-overlay.open{opacity:1;}
 .eco-sheet{position:fixed;bottom:0;left:0;right:0;z-index:8950;background:var(--white);border-radius:20px 20px 0 0;padding:20px 20px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.12);transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.6,1);display:flex;flex-direction:column;gap:10px;}
-.eco-sheet-handle{width:36px;height:4px;border-radius:2px;background:var(--gray-border);margin:0 auto 10px;}
+.eco-sheet-handle{width:36px;height:4px;border-radius:2px;background:var(--gray-border);margin:0 auto 10px;cursor:grab;padding:10px 24px;box-sizing:content-box;background-clip:content-box;}
 .eco-sheet-tag{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--gray);}
 .eco-sheet-name{font-size:18px;font-family:var(--serif);font-weight:400;color:var(--black);line-height:1.2;}
 .eco-sheet-desc{font-size:14px;color:var(--gray);line-height:1.65;}
 .eco-sheet-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--black);text-decoration:none;border-bottom:1px solid var(--gray-border);padding-bottom:1px;margin-top:4px;width:fit-content;}
 .eco-sheet-link svg{width:11px;height:11px;flex-shrink:0;}
 
+/* ── SCROLL TO TOP BUTTON ── */
+.scroll-top-btn{position:fixed;bottom:28px;right:28px;z-index:500;width:44px;height:44px;border-radius:50%;background:rgba(90,90,90,.55);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s,background .18s;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.scroll-top-btn.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.scroll-top-btn:hover{background:rgba(90,90,90,.85);}
+.scroll-top-btn svg{width:18px;height:18px;}
+
 @media(max-width:768px){
   .top-nav{padding:0;}.top-nav-inner{padding:0 16px;gap:4px;}
-  .copy-nav-btn .cn-label{display:none;} /* icon only on mobile, but show "Email" */
+  .copy-nav-btn .cn-label{display:none;}
   .copy-nav-btn::after{content:'Email';font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1;}
   .exp-hero-inner,.exp-overview,.exp-content{padding-left:20px;padding-right:20px;}
   .exp-overview{padding-top:24px;}
   .exp-overview-inner{grid-template-columns:1fr;gap:28px;}
-  .stack-box{display:none;} /* hide stack on mobile */
+  .stack-box{display:none;}
+  .stack-mob{display:block;margin-bottom:20px;}
+  .stack-mob-toggle{font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--black);}
   .exp-company{white-space:normal;}
   .exp-title{font-size:28px;}
   .tabs-inner{padding:10px 16px 0;height:auto;flex-wrap:nowrap;}
   .tab-btn{font-size:11px;padding:6px 12px;}
   #mob-prog-bar{display:block;}
-  /* proj layout: stack vertically, gallery below content */
   .side-progress{display:none;}
   .proj-num-bg{display:none;}
   .proj-layout{grid-template-columns:1fr;gap:24px;}
@@ -205,17 +220,20 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
   .metrics-row{gap:10px;}.metric-item{min-width:calc(50% - 7px);max-width:none;}
   .bottom-nav{padding:32px 20px 48px;flex-direction:column;align-items:stretch;}.bt-btn{justify-content:center;}
   .proj-block{padding:36px 0;}
-  /* mobile: chips tap → bottom sheet */
   .eco-chip{cursor:pointer;}
   .eco-tooltip{display:none!important;}
   .eco-sheet-overlay{display:block;}
   .eco-sheet{transform:translateY(100%);}
   .eco-sheet.open{transform:translateY(0);}
+  .scroll-top-btn{bottom:20px;right:16px;}
 }
 </style>
 </head>
 <body>
 <div id="prog"></div>
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
 
 <nav class="top-nav">
   <div class="top-nav-inner">
@@ -267,6 +285,21 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 </div>
 
 <div class="exp-overview-bottom-gap"></div>
+
+<div class="stack-mob" id="stackMob">
+  <button class="stack-mob-toggle" onclick="toggleStackMob()">
+    Stack
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+  </button>
+  <div class="stack-mob-body">
+    <div class="stack-mob-inner">
+      <div class="stack-row"><span class="stack-cat">Backend</span><div class="stack-chips"><span class="stack-chip">Python (monolith)</span><span class="stack-chip">REST API</span><span class="stack-chip">Kafka</span><span class="stack-chip">Swagger</span><span class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Frontend</span><div class="stack-chips"><span class="stack-chip">Vue.js</span><span class="stack-chip">Nuxt.js</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Infrastructure</span><div class="stack-chips"><span class="stack-chip">Docker</span><span class="stack-chip">Kubernetes</span><span class="stack-chip">GitLab CI/CD</span><span class="stack-chip">Nginx</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Monitoring</span><div class="stack-chips"><span class="stack-chip">ELK Stack</span><span class="stack-chip">Grafana</span><span class="stack-chip">Prometheus</span><span class="stack-chip">Sentry</span></div></div>
+    </div>
+  </div>
+</div>
 
 <div class="tabs-sticky" id="tabs-sticky">
   <div class="tabs-inner" id="tabs-inner">
@@ -415,7 +448,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 </div>
 
 <!-- Mobile bottom sheet -->
-<div class="eco-sheet-overlay" id="ecoOverlay" onclick="closeSheet()"></div>
+<div class="eco-sheet-overlay" id="ecoOverlay"></div>
 <div class="eco-sheet" id="ecoSheet">
   <div class="eco-sheet-handle"></div>
   <span class="eco-sheet-tag" id="shtag"></span>
@@ -440,6 +473,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 </div>
 
 <script>
+function toggleStackMob(){var el=document.getElementById('stackMob');el.classList.toggle('open');}
 var EMAIL='svetlanasitdikova.nl@gmail.com';
 var galleries=[
   ['proj1-1.png','proj1-2.png','proj1-3.png'],
@@ -625,8 +659,49 @@ document.querySelectorAll('.eco-chip').forEach(function(chip){
     if(window.innerWidth<=768) openSheet(chip);
   });
 });
+document.getElementById('ecoOverlay').addEventListener('click',closeSheet);
+
+/* ── SWIPE DOWN TO CLOSE BOTTOM SHEET ── */
+(function(){
+  var sh=document.getElementById('ecoSheet');
+  var handle=sh.querySelector('.eco-sheet-handle');
+  var startY=0,curY=0,dragging=false;
+
+  function onStart(e){
+    startY=e.touches?e.touches[0].clientY:e.clientY;
+    curY=startY;
+    dragging=true;
+    sh.style.transition='none';
+  }
+  function onMove(e){
+    if(!dragging)return;
+    curY=e.touches?e.touches[0].clientY:e.clientY;
+    var dy=Math.max(0,curY-startY);
+    sh.style.transform='translateY('+dy+'px)';
+  }
+  function onEnd(){
+    if(!dragging)return;
+    dragging=false;
+    sh.style.transition='';
+    var dy=curY-startY;
+    if(dy>60){
+      sh.style.transform='';
+      closeSheet();
+    } else {
+      sh.style.transform='';
+    }
+  }
+
+  handle.addEventListener('touchstart',onStart,{passive:true});
+  handle.addEventListener('touchmove',onMove,{passive:true});
+  handle.addEventListener('touchend',onEnd);
+})();
 
 window.addEventListener('scroll',updateTabs,{passive:true});
+(function(){
+  var btn=document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});
+})();
 initSideDots();initGallery();updateTabs();
 
 /* ── ANCHOR SCROLL ON LOAD ── */

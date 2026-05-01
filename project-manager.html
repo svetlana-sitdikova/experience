@@ -30,7 +30,7 @@ if(window.location.pathname.endsWith('.html')){
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--yellow:#EDD55A;--white:#FFFFFF;--black:#0B0B0C;--gray:#5a5a5a;--gray-light:#F4F4F2;--gray-border:#E5E5E5;--sans:'DM Sans',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:17px;line-height:1.7;overflow-x:hidden;}
+body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:17px;line-height:1.7;overflow-x:clip;}
 #prog{position:fixed;top:0;left:0;height:3px;background:var(--yellow);width:0%;z-index:9999;border-radius:0 2px 2px 0;transition:width .08s linear;}
 .top-nav{position:sticky;top:0;z-index:200;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.88);border-bottom:1px solid var(--gray-border);height:60px;display:flex;align-items:center;}
 .top-nav-inner{max-width:1200px;width:100%;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:8px;}
@@ -70,6 +70,14 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .stack-vals{font-size:13px;color:var(--gray);line-height:1.45;}
 .stack-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;}
 .stack-chip{display:inline-block;font-size:12px;font-weight:400;color:var(--gray);background:var(--white);border:1px solid var(--gray-border);border-radius:6px;padding:2px 8px;line-height:1.5;white-space:nowrap;}
+/* mobile accordion stack */
+.stack-mob{display:none;margin:0 20px;border-radius:12px;overflow:hidden;border:1px solid var(--gray-border);}
+.stack-mob-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border:none;padding:14px 16px;cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);}
+.stack-mob-toggle svg{width:14px;height:14px;flex-shrink:0;transition:transform .25s;}
+.stack-mob.open .stack-mob-toggle svg{transform:rotate(180deg);}
+.stack-mob-body{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--gray-light);}
+.stack-mob.open .stack-mob-body{max-height:500px;}
+.stack-mob-inner{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px;}
 .tabs-sticky{position:sticky;top:60px;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.88);border-bottom:1px solid var(--gray-border);}
 .tabs-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2px;height:52px;padding:0 48px;overflow-x:auto;scrollbar-width:none;}
 .tabs-inner::-webkit-scrollbar{display:none;}
@@ -121,6 +129,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .bottom-nav{max-width:1200px;margin:0 auto;padding:48px 48px 64px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .bt-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:var(--black);padding:12px 24px;border-radius:10px;border:1.5px solid var(--gray-border);transition:all .2s;background:none;cursor:pointer;font-family:var(--sans);}
 .bt-btn:hover{background:var(--yellow);border-color:var(--yellow);}
+/* ── SCROLL TO TOP BUTTON ── */
+.scroll-top-btn{position:fixed;bottom:28px;right:28px;z-index:500;width:44px;height:44px;border-radius:50%;background:rgba(90,90,90,.55);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s,background .18s;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.scroll-top-btn.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.scroll-top-btn:hover{background:rgba(90,90,90,.85);}
+.scroll-top-btn svg{width:18px;height:18px;}
+
 @media(max-width:768px){
   .top-nav{padding:0;}.top-nav-inner{padding:0 16px;gap:4px;}
   .copy-nav-btn .cn-label{display:none;}
@@ -129,6 +143,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
   .exp-overview{padding-top:24px;}
   .exp-overview-inner{grid-template-columns:1fr;gap:28px;}
   .stack-box{display:none;}
+  .stack-mob{display:block;margin-bottom:20px;}
+  .stack-mob-toggle{font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--black);}
   .exp-company{white-space:normal;}
   .exp-title{font-size:28px;}
   .tabs-inner{padding:10px 16px 0;height:auto;flex-wrap:nowrap;}
@@ -142,14 +158,19 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
   .metrics-row{gap:10px;}.metric-item{min-width:calc(50% - 7px);max-width:none;}
   .bottom-nav{padding:32px 20px 48px;flex-direction:column;align-items:stretch;}.bt-btn{justify-content:center;}
   .proj-block{padding:36px 0;}
+  .scroll-top-btn{bottom:20px;right:16px;}
 }
 </style>
 </head>
 <body>
 <div id="prog"></div>
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
 
 <nav class="top-nav">
   <div class="top-nav-inner">
+
     <a href="." class="back-link" onclick="gtag('event','click_back_main_pm')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="19,12 5,12"/><polyline points="12,5 5,12 12,19"/></svg>
       <span>Back</span>
@@ -199,6 +220,21 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 </div>
 
 <div class="exp-overview-bottom-gap"></div>
+
+<div class="stack-mob" id="stackMob">
+  <button class="stack-mob-toggle" onclick="toggleStackMob()">
+    Stack
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+  </button>
+  <div class="stack-mob-body">
+    <div class="stack-mob-inner">
+      <div class="stack-row"><span class="stack-cat">Backend</span><div class="stack-chips"><span class="stack-chip">Python (microservices &amp; monolith)</span><span class="stack-chip">REST API</span><span class="stack-chip">GraphQL</span><span class="stack-chip">Kafka</span><span class="stack-chip">Swagger</span><span class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Frontend</span><div class="stack-chips"><span class="stack-chip">Vue.js</span><span class="stack-chip">Nuxt.js</span><span class="stack-chip">TypeScript</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Infrastructure</span><div class="stack-chips"><span class="stack-chip">Docker</span><span class="stack-chip">Kubernetes</span><span class="stack-chip">GitLab CI/CD</span><span class="stack-chip">Nginx</span><span class="stack-chip">Keycloak</span></div></div>
+      <div class="stack-row"><span class="stack-cat">Monitoring</span><div class="stack-chips"><span class="stack-chip">ELK Stack</span><span class="stack-chip">Grafana</span><span class="stack-chip">Prometheus</span><span class="stack-chip">Sentry</span></div></div>
+    </div>
+  </div>
+</div>
 
 <div class="tabs-sticky" id="tabs-sticky">
   <div class="tabs-inner" id="tabs-inner">
@@ -319,6 +355,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 </div>
 
 <script>
+function toggleStackMob(){var el=document.getElementById('stackMob');el.classList.toggle('open');}
 var EMAIL='svetlanasitdikova.nl@gmail.com';
 var galleries=[
   ['pm-p1-1.png','pm-p1-2.png','pm-p1-3.png'],
@@ -404,6 +441,10 @@ function copyNavEmail(){
   });
 }
 window.addEventListener('scroll',updateTabs,{passive:true});
+(function(){
+  var btn=document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});
+})();
 initSideDots();initGallery();updateTabs();
 
 /* ── ANCHOR SCROLL ON LOAD ── */
