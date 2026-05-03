@@ -88,9 +88,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .exp-content{max-width:1200px;margin:0 auto;padding:0 48px;}
 .proj-block{padding:60px 0;border-bottom:1px solid var(--gray-border);position:relative;}
 .proj-block:last-child{border-bottom:none;}
-.proj-num-wrap{position:relative;margin-bottom:8px;}
+.proj-num-wrap{position:relative;margin-bottom:8px;display:flex;align-items:baseline;gap:10px;}
 .proj-num{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);position:relative;z-index:1;}
-.proj-num-bg{position:absolute;top:-28px;left:-12px;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(80px,10vw,120px);font-weight:400;color:rgba(11,11,12,.04);line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.proj-num-bg{display:none;}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.proj-tag{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);background:var(--gray-light);border-radius:5px;padding:2px 8px;line-height:1.5;white-space:nowrap;}
 .proj-title{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.1;margin-bottom:14px;}
 .proj-url{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:18px;border-bottom:1px solid var(--gray-border);padding-bottom:1px;transition:color .2s;}
 .proj-url:hover{color:var(--black);}
@@ -253,7 +255,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj1">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 01</span><span class="proj-num-bg">01</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 01</span><div class="proj-tags"><span class="proj-tag">B2C</span><span class="proj-tag">Marketplace</span></div><span class="proj-num-bg">01</span></div>
         <h2 class="proj-title">Samolet Plus Secondary Real Estate Marketplace</h2>
         <a href="https://samoletplus.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_samoletplus')">samoletplus.ru ↗</a>
         <p class="proj-desc">A nationwide marketplace for secondary real estate listings submitted by independent agents across Russian cities, aggregated from agents and deeply integrated with an external CRM as the primary data source. I joined this project when deadlines had already been missed and the previous PM had left — took full ownership and brought it to production.</p>
@@ -275,7 +277,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj2">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 02</span><span class="proj-num-bg">02</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 02</span><div class="proj-tags"><span class="proj-tag">Internal</span><span class="proj-tag">Cross-product</span></div><span class="proj-num-bg">02</span></div>
         <h2 class="proj-title">Samolet Plus Auth & SMS Notification Service</h2>
         <p class="proj-desc">An internal cross-product service built to unify identity management and SMS notifications across multiple digital platforms. Built on Keycloak, handling authentication, authorization, and centralized OTP delivery. A cross-team dependency project: multiple platforms depended on it shipping correctly.</p>
         <p class="resp-title">What I did</p>
@@ -288,7 +290,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj3">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 03</span><span class="proj-num-bg">03</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 03</span><div class="proj-tags"><span class="proj-tag">B2C</span><span class="proj-tag">E-commerce</span></div><span class="proj-num-bg">03</span></div>
         <h2 class="proj-title">A101 Real Estate Digital Platform</h2>
         <a href="https://a101.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_a101')">a101.ru ↗</a>
         <p class="proj-desc">A digital customer-facing real estate marketplace enabling users to browse, book, and purchase residential properties online. The platform integrates with CRM and other third-party services. Work covered long-term platform support and enhancement.</p>
@@ -308,7 +310,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj4">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 04</span><span class="proj-num-bg">04</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 04</span><div class="proj-tags"><span class="proj-tag">B2C</span></div><span class="proj-num-bg">04</span></div>
         <h2 class="proj-title">A101 Interactive Commercial Real Estate Map</h2>
         <a href="https://a101.ru/commercial/map/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_a101_map')">a101.ru/commercial/map ↗</a>
         <p class="proj-desc">A fully custom interactive map platform for browsing and selecting commercial spaces (retail, office, restaurant units) in A101's developments — properties that were still under construction at the time. The entire map was built from scratch: designers hand-drew every layer from architectural and urban development plans, which were then sliced into image tiles on the backend, with unit outlines and infrastructure points (entrances, parking, metro) overlaid programmatically.</p>
@@ -323,7 +325,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj5">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 05</span><span class="proj-num-bg">05</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 05</span><div class="proj-tags"><span class="proj-tag">B2C</span></div><span class="proj-num-bg">05</span></div>
         <h2 class="proj-title">Beregovoy Kvartal Premium Residential Website</h2>
         <a href="https://beregovoy-kvartal.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_beregovoy')">beregovoy-kvartal.ru ↗</a>
         <p class="proj-desc">A marketing website for a premium residential complex, focused on lead generation and showcasing property offerings.</p>

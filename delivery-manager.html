@@ -105,9 +105,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 .proj-block:last-child{border-bottom:none;}
 
 /* decorative large project number */
-.proj-num-wrap{position:relative;margin-bottom:8px;}
+.proj-num-wrap{position:relative;margin-bottom:8px;display:flex;align-items:baseline;gap:10px;}
 .proj-num{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);position:relative;z-index:1;}
-.proj-num-bg{position:absolute;top:-28px;left:-12px;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(80px,10vw,120px);font-weight:400;color:rgba(11,11,12,.04);line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.proj-num-bg{display:none;}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.proj-tag{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);background:var(--gray-light);border-radius:5px;padding:2px 8px;line-height:1.5;white-space:nowrap;}
 
 .proj-title{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.1;margin-bottom:14px;position:relative;z-index:1;}
 .proj-url{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:18px;border-bottom:1px solid var(--gray-border);padding-bottom:1px;transition:color .2s;}
@@ -316,7 +318,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj1">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 01</span><span class="proj-num-bg">01</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 01</span><div class="proj-tags"><span class="proj-tag">B2C</span><span class="proj-tag">B2B</span><span class="proj-tag">Internal</span></div><span class="proj-num-bg">01</span></div>
         <h2 class="proj-title">Samolet Ecosystem Multi-Team Program</h2>
         <a href="https://samolet.ru/" class="proj-url" target="_blank" rel="noopener" onclick="gtag('event','click_link_samolet')">samolet.ru ↗</a>
         <p class="proj-desc">Delivery across the full Samolet digital ecosystem: high-load website (5M+ MAU), customer account with online property purchases, and internal B2B tools. My role was to make 53 engineers, designers, and PMs aligned, unblocked, and shipping — while the team and product were both growing rapidly in a multi-vendor environment with an outstaff team.</p>
@@ -403,7 +405,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj2">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 02</span><span class="proj-num-bg">02</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 02</span><div class="proj-tags"><span class="proj-tag">Internal tool</span></div><span class="proj-num-bg">02</span></div>
         <h2 class="proj-title">No-Code Landing Page Builder</h2>
         <p class="proj-desc">An internal no-code platform enabling the marketing team to independently create and publish website landing pages without developer involvement. I identified this bottleneck, proposed the solution, got stakeholder buy-in, assembled the team from scratch, and delivered the product — reducing page launch time from 2–3 weeks to 1 day.</p>
         <div class="metrics-row">
@@ -420,7 +422,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);font-siz
 
   <div class="proj-block" id="proj3">
     
-        <div class="proj-num-wrap"><span class="proj-num">Project 03</span><span class="proj-num-bg">03</span></div>
+        <div class="proj-num-wrap"><span class="proj-num">Project 03</span><div class="proj-tags"><span class="proj-tag">B2C</span><span class="proj-tag">E-commerce</span></div><span class="proj-num-bg">03</span></div>
         <h2 class="proj-title">Online Real Estate Transaction Flow</h2>
         <p class="proj-desc">A complex multi-step flow enabling users to purchase an apartment entirely online: personal questionnaire, document generation, digital signing, file uploads, and payment — with deep CRM integration. The original plan was 6 months. When the CPO pushed back, I rebuilt the plan and delivered an MVP in 2.5 months.</p>
         <div class="metrics-row">
