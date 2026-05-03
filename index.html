@@ -183,6 +183,25 @@ nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07);}
 .proj-card:hover .proj-card-cta{color:var(--black);}
 .proj-card:hover .proj-card-cta svg{transform:translateX(3px);}
 
+/* ── INLINE PROJECT CARDS (inside timeline) ── */
+.tl-proj-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin:20px 0 10px;}
+.tl-proj-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;max-width:75%;align-items:stretch;}
+.tl-proj-card{background:var(--white);border:1px solid var(--gray-border);border-radius:6px;padding:22px 24px;display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit;transition:background .2s;}
+.tl-proj-card:hover{background:var(--gray-light);}
+.tl-proj-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;}
+.tl-proj-badges{display:flex;gap:6px;flex-wrap:wrap;}
+.tl-proj-badge{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);background:var(--white);border:1px solid var(--gray-border);border-radius:5px;padding:2px 7px;white-space:nowrap;line-height:1.5;}.tl-proj-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--black);line-height:1.2;min-height:44px;}
+.tl-proj-card:hover .tl-proj-badge{background:#e4e4e2;}
+.tl-proj-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--black);line-height:1.2;}
+.tl-proj-desc{font-size:13px;color:var(--gray);line-height:1.55;}
+.tl-proj-arrow{font-size:20px;color:var(--gray);flex-shrink:0;transition:color .2s,transform .2s;line-height:1;}
+.tl-proj-card:hover .tl-proj-arrow{color:var(--black);transform:translateX(2px);}
+.tl-see-all{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:14px 0;border-radius:6px;background:var(--black);border:1px solid var(--black);cursor:pointer;font-family:var(--sans);transition:all .2s;max-width:75%;}
+.tl-see-all:hover{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
+.tl-see-all svg{width:12px;height:12px;transition:transform .2s;}
+.tl-see-all:hover svg{transform:translateX(3px);}
+@media(max-width:960px){.tl-proj-row{grid-template-columns:1fr;max-width:100%;}.tl-see-all{max-width:100%;}}
+
 /* ── FOOTER ── */
 footer{background:var(--black);color:var(--white);padding:36px 0 0;}
 .ft-inner{max-width:var(--ct);margin:0 auto;padding:0 48px 42px;display:grid;grid-template-columns:1fr 1fr;gap:64px;border-bottom:1px solid #1E1E20;}
@@ -431,8 +450,27 @@ footer{background:var(--black);color:var(--white);padding:36px 0 0;}
               <div class="tl-ach"><em>7s → &lt;3s</em> load time on key pages — optimised via CDN, caching, backend requests, and Vue 2 → Nuxt 3 migration</div>
               <div class="tl-ach"><em>2 weeks → 1 day</em> page launch time — initiated and delivered a no-code landing page builder</div>
             </div>
-            <a href="delivery-manager.html" class="tl-link" target="_blank" onclick="gtag('event','click_exp_dm_detail')">
-              Projects in detail
+            <p class="tl-proj-label">Projects</p>
+            <div class="tl-proj-row">
+              <a href="delivery-manager.html#proj1" class="tl-proj-card" target="_blank" rel="noopener" onclick="gtag('event','click_proj_card_dm1')">
+                <div class="tl-proj-body">
+                  <div class="tl-proj-badges"><span class="tl-proj-badge">B2C</span><span class="tl-proj-badge">B2B</span><span class="tl-proj-badge">Internal</span></div>
+                  <div class="tl-proj-title">Samolet Ecosystem Multi-Team Program</div>
+                  <div class="tl-proj-desc">6 teams, 5M MAU website + customer account + B2B tools.</div>
+                </div>
+                <span class="tl-proj-arrow">›</span>
+              </a>
+              <a href="delivery-manager.html#proj2" class="tl-proj-card" target="_blank" rel="noopener" onclick="gtag('event','click_proj_card_dm2')">
+                <div class="tl-proj-body">
+                  <div class="tl-proj-badges"><span class="tl-proj-badge">Internal tool</span></div>
+                  <div class="tl-proj-title">No-Code Landing Page Builder</div>
+                  <div class="tl-proj-desc">Cut marketing page launch from 2–3 weeks to 1 day.</div>
+                </div>
+                <span class="tl-proj-arrow">›</span>
+              </a>
+            </div>
+            <a href="delivery-manager.html" class="tl-see-all" target="_blank" rel="noopener" onclick="gtag('event','click_exp_dm_detail')">
+              All projects
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
             </a>
           </div>
@@ -449,8 +487,27 @@ footer{background:var(--black);color:var(--white);padding:36px 0 0;}
               <div class="tl-ach"><em>+30%</em> agency profitability through billing revision</div>
               <div class="tl-ach"><em>8.7 / 10</em> average client satisfaction in monthly surveys</div>
             </div>
-            <a href="project-manager.html" class="tl-link" target="_blank" onclick="gtag('event','click_exp_pm_detail')">
-              Projects in detail
+            <p class="tl-proj-label">Projects</p>
+            <div class="tl-proj-row">
+              <a href="project-manager.html#proj1" class="tl-proj-card" target="_blank" rel="noopener" onclick="gtag('event','click_proj_card_pm1')">
+                <div class="tl-proj-body">
+                  <div class="tl-proj-badges"><span class="tl-proj-badge">B2C</span><span class="tl-proj-badge">Marketplace</span></div>
+                  <div class="tl-proj-title">Secondary Real Estate Marketplace</div>
+                  <div class="tl-proj-desc">Joined mid-crisis, brought 20-person team to production.</div>
+                </div>
+                <span class="tl-proj-arrow">›</span>
+              </a>
+              <a href="project-manager.html#proj2" class="tl-proj-card" target="_blank" rel="noopener" onclick="gtag('event','click_proj_card_pm2')">
+                <div class="tl-proj-body">
+                  <div class="tl-proj-badges"><span class="tl-proj-badge">Internal</span><span class="tl-proj-badge">Cross-product</span></div>
+                  <div class="tl-proj-title">Auth & SMS Notification Service</div>
+                  <div class="tl-proj-desc">Unified identity + notifications across platforms on Keycloak.</div>
+                </div>
+                <span class="tl-proj-arrow">›</span>
+              </a>
+            </div>
+            <a href="project-manager.html" class="tl-see-all" target="_blank" rel="noopener" onclick="gtag('event','click_exp_pm_detail')">
+              All projects
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
             </a>
           </div>
